@@ -9,7 +9,7 @@ import { set } from 'mongoose'
 
 function Login() {
     const navigate = useNavigate();
-    const disptach = useDispatch();
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm()
     const [error, setError] = useState("")
 
@@ -19,7 +19,7 @@ function Login() {
             const session = await authService.login(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
-                if (userData) dispatchEvent(authLogin(userData));
+                if (userData) dispatch(authLogin(userData));
                 navigate("/")
             }
         } catch (error) {
@@ -77,7 +77,6 @@ function Login() {
                   </div>
               </form>
           </div>
-      
     </div>
   )
 }
